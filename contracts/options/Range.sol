@@ -10,7 +10,8 @@ contract Range is BinaryOption{
     }
     
     struct rangeOptions{
-        range range;
+        int256 dn;
+        int256 up;
         option[] options;
     }
 
@@ -43,8 +44,8 @@ contract Range is BinaryOption{
                 for (uint256 j=0; j<tradersOptions[i].length; j++)
                     rOptions[i].options.push(tradersOptions[i][j]);
 
-                rOptions[i].range.dn = tradersRange[i].dn;
-                rOptions[i].range.up = tradersRange[i].up;
+                rOptions[i].dn = tradersRange[i].dn;
+                rOptions[i].up = tradersRange[i].up;
             }        
     }    
 
@@ -59,8 +60,8 @@ contract Range is BinaryOption{
         int256 lastPrice = getAndValidateLatestPrice();
         
         for (uint256 i=0; i<rOptions.length; i++)
-            if(lastPrice >= rOptions[i].range.dn &&
-               lastPrice <= rOptions[i].range.up)
+            if(lastPrice >= rOptions[i].dn &&
+               lastPrice <= rOptions[i].up)
                 {setPrizes(rOptions[i].options); return;}
 
         for (uint256 i=0; i<rOptions.length; i++)
@@ -71,8 +72,8 @@ contract Range is BinaryOption{
         for (uint256 i=0; i<rOptions.length; i++)
             retorno = string.concat(retorno,
                                     optionsToString(rOptions[i].options),
-                                    "\tRange:",Strings.toString(uint256(rOptions[i].range.dn)),
-                                    " - ", Strings.toString(uint256(rOptions[i].range.up)),
+                                    "\tRange:",Strings.toString(uint256(rOptions[i].dn)),
+                                    " - ", Strings.toString(uint256(rOptions[i].up)),
                                     "\n\n");
     }
 }
