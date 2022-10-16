@@ -4,6 +4,8 @@ This project:
 - was developed with [Hardhat](https://hardhat.org/)
 - has not been audited
 
+For more details on the project read this [document](https://docs.google.com/document/d/1sfBkiMlbf2okSooYjHcIOAWxjDHrrawVFgSDI2zmlqY/edit?usp=sharing)
+
 # Warnings
 
 - I’ve just learned solidity and typescript, probably there are some mistakes in the code
